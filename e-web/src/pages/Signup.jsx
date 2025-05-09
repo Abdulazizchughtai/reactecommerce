@@ -30,7 +30,7 @@ const Signup = () => {
         alert("Account Logged in!");
       }
 
-      navigate("/home");
+      navigate("/profile");
     } catch (err) {
       setError(err.message);
     }

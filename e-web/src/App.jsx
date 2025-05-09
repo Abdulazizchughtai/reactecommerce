@@ -9,6 +9,7 @@ import Resources from './pages/Resources';
 import Help from './pages/Help';
 import Signup from './pages/Signup';
 import ProtectedRoute from './components/ProtectedRoute';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Help />
           </ProtectedRoute>
         } />
+          <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </>

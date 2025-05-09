@@ -17,7 +17,7 @@ const Navbar = () => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
-    return () => unsubscribe();
+   
   }, []);
 
   const handleLogout = async () => {
@@ -33,11 +33,12 @@ const Navbar = () => {
 
         {/* Desktop menu */}
         <ul className="hidden md:flex space-x-6">
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/company">Company</Link></li>
-          <li><Link to="/resource">Resources</Link></li>
-          <li><Link to="/help">Help</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
+          <li><Link to="/home" className="hover:text-[#00df9a] transition">Home</Link></li>
+          <li><Link to="/company" className="hover:text-[#00df9a] transition">Company</Link></li>
+          <li><Link to="/resource" className="hover:text-[#00df9a] transition">Resources</Link></li>
+          <li><Link to="/help" className="hover:text-[#00df9a] transition">Help</Link></li>
+          <li><Link to="/contact" className="hover:text-[#00df9a] transition">Contact</Link></li>
+           <li><Link to="/profile" className="hover:text-[#00df9a] transition">Profile</Link></li>
           <li>
             {user ? (
               <button onClick={handleLogout} className="hover:text-[#00df9a] transition">Sign out</button>
@@ -53,11 +54,12 @@ const Navbar = () => {
 
 
         <ul className={`md:hidden fixed top-0 right-0 w-2/3 h-full bg-[#000300] text-white flex flex-col items-center justify-center space-y-8 text-xl transition-transform duration-300 ${nav ? "translate-x-0" : "translate-x-full"}`}>
-          <li onClick={toggleNav}><Link to="/home">Home</Link></li>
-          <li onClick={toggleNav}><Link to="/company">Company</Link></li>
-          <li onClick={toggleNav}><Link to="/resource">Resources</Link></li>
-          <li onClick={toggleNav}><Link to="/help">Help</Link></li>
-          <li onClick={toggleNav}><Link to="/contact">Contact</Link></li>
+          <li onClick={toggleNav}><Link to="/home" className="hover:text-[#00df9a] transition">Home</Link></li>
+          <li onClick={toggleNav}><Link to="/company" className="hover:text-[#00df9a] transition">Company</Link></li>
+          <li onClick={toggleNav}><Link to="/resource" className="hover:text-[#00df9a] transition">Resources</Link></li>
+          <li onClick={toggleNav}><Link to="/help" className="hover:text-[#00df9a] transition">Help</Link></li>
+          <li onClick={toggleNav}><Link to="/contact" className="hover:text-[#00df9a] transition">Contact</Link></li>
+           <li onClick={toggleNav}><Link to="/profile" className="hover:text-[#00df9a] transition">Profile</Link></li>
           <li>
             {user ? (
               <button onClick={() => { handleLogout(); toggleNav(); }} className="hover:text-[#00df9a] transition">Sign out</button>
