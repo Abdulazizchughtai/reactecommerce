@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
@@ -13,7 +13,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,13 +22,15 @@ const Signup = () => {
     try {
       if (isSignUp) {
         await createUserWithEmailAndPassword(auth, email, password);
+        sessionStorage.setItem("user", JSON.stringify({ email }));
         alert("Account Created!");
       } else {
         await signInWithEmailAndPassword(auth, email, password);
+        sessionStorage.setItem("user", JSON.stringify({ email }));
         alert("Account Logged in!");
       }
 
-      navigate("/"); 
+      navigate("/home");
     } catch (err) {
       setError(err.message);
     }

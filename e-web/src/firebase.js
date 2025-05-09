@@ -1,6 +1,5 @@
-// src/firebase.js
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";  // 🔥 Import Firebase Auth
+import { getAuth, setPersistence, browserSessionPersistence } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBxCMxlFc73nmpWkfXqYXIeI7s8grd-30I",
@@ -11,8 +10,12 @@ const firebaseConfig = {
   appId: "1:994827158551:web:875c2eae340c0b9b720852"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-// Get Auth instance to export
-export const auth = getAuth(app);
+// ✅ Enforce login session to last only until tab/browser is closed
+setPersistence(auth, browserSessionPersistence).catch((error) => {
+  console.error("Persistence setting error:", error);
+});
+
+export { auth };
