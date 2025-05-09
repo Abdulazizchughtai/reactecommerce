@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  setPersistence,
-  inMemoryPersistence,
 } from "firebase/auth";
 import Footer from "../components/Footer";
 
@@ -15,16 +13,13 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     try {
-      // Force logout on browser close by using in-memory persistence
-      await setPersistence(auth, inMemoryPersistence);
-
       if (isSignUp) {
         await createUserWithEmailAndPassword(auth, email, password);
         alert("Account Created!");
@@ -33,7 +28,7 @@ const Signup = () => {
         alert("Account Logged in!");
       }
 
-      navigate("/");
+      navigate("/"); 
     } catch (err) {
       setError(err.message);
     }
