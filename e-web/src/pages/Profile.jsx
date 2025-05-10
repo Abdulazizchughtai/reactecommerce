@@ -18,7 +18,7 @@ function Profile() {
 
     try {
       if (email) {
-        // First, make sure the email is verified
+       
         if (!user.emailVerified) {
           setMessage("Please verify your current email before updating it.");
           return;
