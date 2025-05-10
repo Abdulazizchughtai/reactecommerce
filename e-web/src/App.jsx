@@ -19,7 +19,11 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/company" element={<Company />} />
-          <Route path="/contact" element={<Contact />} />
+            <Route path="/contact" element={
+          <ProtectedRoute>
+            <Contact />
+          </ProtectedRoute>
+        } />
 
       
       
@@ -35,7 +39,13 @@ function App() {
             <Help />
           </ProtectedRoute>
         } />
-          <Route path="/profile" element={<Profile />} />
+        
+          <Route path="/profile" element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        } />
+         
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
